@@ -1,0 +1,23 @@
+parameters:
+	level: 6
+	paths:
+		- src
+		- tests
+	ignoreErrors:
+		- '#Class .* extends generic class .* but does not specify its types#'
+		- '#Property .* with generic interface Doctrine\\Common\\Collections\\Collection does not specify its types#'
+
+		- '#has PHPDoc tag @method for .* with no value type specified in iterable type array.#'
+
+		- '#Call to an undefined method Symfony\\Component\\HttpFoundation\\Session\\SessionInterface::getFlashBag\(\)#'
+
+		-
+		    message: '#Property App\\Domain\\Entity\\Recipient::\$newsletter is unused.#'
+		    path: src/Domain/Entity/Recipient.php
+		-
+		    message: '#Property App\\Domain\\Entity\\Link::\$newsletter[1|2] is unused.#'
+		    path: src/Domain/Entity/Link.php
+
+		-
+		    message: '#Method .* return type has no value type specified in iterable type iterable.#'
+		    path: tests/Unit/Domain/Image/IsImageExtensionEligibleTest.php

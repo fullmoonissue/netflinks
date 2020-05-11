@@ -1,0 +1,8 @@
+image:
+    filename_not_allowed: 'Unauthorized extension ({{ forbidden_extension }}), the allowed ones are : {{ allowed_extensions }}'
+
+link:
+    url_already_registered: This url is already registered
+
+newsletter:
+    end_date_before_start_date: The last link have to be older than the first link

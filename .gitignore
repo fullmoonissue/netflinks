@@ -1,0 +1,16 @@
+/public/assets/images/*
+!/public/assets/images/.gitkeep
+
+/public/assets/pdfs/*
+!/public/assets/pdfs/.gitkeep
+
+/.phpunit.cache
+/node_modules/
+/test-results/
+/playwright-report/
+/var
+/vendor
+
+/.deptrac.cache
+/.php-cs-fixer.cache
+/.phpunit.result.cache

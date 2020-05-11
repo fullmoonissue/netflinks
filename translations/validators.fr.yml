@@ -1,0 +1,8 @@
+image:
+    filename_not_allowed: 'Extension non autorisée ({{ forbidden_extension }}), les seules admises sont : {{ allowed_extensions }}'
+
+link:
+    url_already_registered: Cette url existe déjà
+
+newsletter:
+    end_date_before_start_date: Le dernier lien doit être plus agé que le premier lien

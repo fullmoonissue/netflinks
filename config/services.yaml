@@ -1,0 +1,41 @@
+parameters:
+    locales: [en, fr]
+
+    db_name: data.db # Will be overridden on phpunit's tests
+    db_name_test: data_test.db # Phpunit's tests' filename
+    db_path: '%kernel.project_dir%/var/%db_name%'
+    db_url: 'sqlite:///%db_path%'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        bind:
+            $dbPath: '%db_path%'
+            $locales: '%locales%'
+            $projectDirectory: '%kernel.project_dir%'
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/Kernel.php'
+
+    App\Infrastructure\Repository\CategoryRepository:
+        public: true
+
+    App\Infrastructure\Repository\ImageRepository:
+        public: true
+
+    App\Infrastructure\Repository\LinkRepository:
+        public: true
+
+    App\Infrastructure\Repository\RecipientRepository:
+        public: true
+
+    Doctrine\Migrations\Version\DbalMigrationFactory: ~
+    App\Infrastructure\Migration\MigrationFactoryDecorator:
+        decorates: Doctrine\Migrations\Version\DbalMigrationFactory
+        arguments: ['@App\Infrastructure\Migration\MigrationFactoryDecorator.inner', '@service_container']
+
+    App\Domain\Image\UnregisteredImageExtractor:
+        arguments:
+            $publicImagesPathGenerator: '@App\Domain\Path\PublicImagePathGenerator'

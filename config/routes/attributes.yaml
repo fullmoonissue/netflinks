@@ -1,0 +1,7 @@
+admin_controllers:
+    resource: ../../src/Infrastructure/Controller/
+    type: attribute
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: attribute

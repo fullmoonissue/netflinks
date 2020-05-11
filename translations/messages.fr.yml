@@ -1,0 +1,120 @@
+menu:
+    dashboard: Tableau de bord
+    link: Lien
+    links: Liens
+    recipient: Destinataire
+    recipients: Destinataires
+    tag: Tag
+    tags: Tags
+    category: Catégorie
+    categories: Catégories
+    image: Image
+    images: Images
+    newsletter: Newsletter
+    newsletters: Newsletters
+
+subMenu:
+    linked.images: Attachées
+    not_linked.images: Non attachées
+
+action:
+    add:
+        link: Ajouter un lien
+        recipient: Ajouter un destinataire
+        tag: Ajouter un tag
+        category: Ajouter une catégorie
+        newsletter: Ajouter une newsletter
+    assign_images_to_recipient: Assigner les images au destinataire
+    check_status_code: Vérifier le code statut
+    compute_requested_image_count: Calculer le nombre d'images requises
+    open_url: Ouvrir l'url
+    generate_pdf: Générer le pdf
+    images_not_saved: Non sauvegardées
+    ingest_new_images: Ingérer les nouvelles images
+    prepare_next_nl: Préparer la prochaine NL
+    show_recipients: Afficher le(s) destinataire(s)
+
+field:
+    id: Identifiant
+
+    link: Lien
+    links: Liens
+    description: Description
+    url: Url
+    date: Date de création
+    is_favorite: Est favori
+    tags: Tags
+    note: Note
+
+    recipient: Destinataire
+    recipients: Destinataires
+    short: Nom court
+
+    category: Catégorie
+    categories: Catégories
+    name: Nom
+
+    images: Images
+    image: Image
+    filename: Nom du fichier
+
+    newsletters: Newsletters
+    first_link: Premier lien
+    last_link: Dernier lien
+
+index:
+    links: Liste des liens
+    favorites: Liste des favoris
+    recipients: Liste des destinataires
+    tags: Liste des tags
+    categories: Liste des catégories
+    images: Liste des images
+    images_used_by_everyone: Utilisées par tous
+    images_deletable: Liste des images supprimables (car utilisées par tous)
+    newsletters: Liste des newsletters
+
+new:
+    links: Ajout d'un nouveau lien
+    recipients: Ajout d'un nouveau destinataire
+    tags: Ajout d'un nouveau tag
+    categories: Ajout d'une nouvelle catégorie
+    images: Ajout d'une nouvelle image
+    newsletters: Ajout d'une nouvelle newsletter
+
+edit:
+    links: Modifier les informations du lien
+    recipients: Modifier le destinataire
+    tags: Modifier le tag
+    categories: Modifier la catégorie
+    images: Modifier l'image
+    newsletters: "[%recipient_name%] Modifier sa newsletter"
+
+alert:
+    actions_on_prepare_next_nl: Cela assignera les prochains liens et videra les images. Toujours ok?
+    confirm_ingest_unsaved_images: Confirmer la création de nouvelles images à partir des fichiers ajoutés ?
+    image_requested_count: "%count% images sont requises"
+    no_image_used_by_everyone: Aucune image n'est utilisée par tous
+    nothing_to_ingest: Il n'y a pas d'image à ingérer
+
+success:
+    next_nl_prepared: Premier et dernier liens assignés et les images ne sont plus assignées
+    images_assigned_to: Image(s) assignée(s) à %recipient%
+    create: Le contenu "%name%" a été créé avec succès.
+    update: Le contenu "%name%" a été mis à jour avec succès.
+    delete: Le contenu "%name%" a été supprimé avec succès.
+    new_images_ingested: "Ingestion de %count% image(s) effectuée"
+    pdf_generated: "Pdf généré, chemin : %path%"
+
+error:
+    images_needed: Exactement %imageCountNeeded% image(s) requise(s) (%imageCountPrepared% assignée(s))
+    images_not_all_assigned: Au moins une image n'est pas assignée avec le destinataire
+    nl_date_in_the_past: La date est dans le passé
+    no_new_link: Il n'y a pas de nouveau lien
+    markdown_not_convertable_to_html: La conversion de markdown vers html a échoué
+
+newsletter:
+    header: "Newsletter"
+    footer: "Édition du %date%"
+
+help:
+    last_link: Celui-ci peut être vide, il sera automatiquement calculé

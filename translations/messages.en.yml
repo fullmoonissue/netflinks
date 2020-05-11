@@ -1,0 +1,120 @@
+menu:
+    dashboard: Dashboard
+    link: Link
+    links: Links
+    recipient: Recipient
+    recipients: Recipients
+    tag: Tag
+    tags: Tags
+    category: Category
+    categories: Categories
+    image: Image
+    images: Images
+    newsletter: Newsletter
+    newsletters: Newsletters
+
+subMenu:
+    linked.images: Linked
+    not_linked.images: Not linked
+
+action:
+    add:
+        link: Add a link
+        recipient: Add a recipient
+        tag: Add a tag
+        category: Add a category
+        newsletter: Add a newsletter
+    assign_images_to_recipient: Assign images to recipient
+    check_status_code: Check status code
+    compute_requested_image_count: Compute count requested images
+    open_url: Open url
+    generate_pdf: Generate pdf
+    images_not_saved: Not saved
+    ingest_new_images: Ingest new images
+    prepare_next_nl: Prepare next NL
+    show_recipients: Show recipient(s)
+
+field:
+    id: Id
+
+    link: Link
+    links: Link
+    description: Description
+    url: Url
+    date: Created at
+    is_favorite: Is favorite
+    tags: Tags
+    note: Note
+
+    recipient: Recipient
+    recipients: Recipients
+    short: Short name
+
+    category: Category
+    categories: Categories
+    name: Name
+
+    images: Images
+    image: Image
+    filename: File name
+
+    newsletters: Newsletters
+    first_link: First link
+    last_link: Last link
+
+index:
+    links: Link list
+    favorites: Favorite list
+    recipients: Recipient list
+    tags: Tag list
+    categories: Category list
+    images: Image list
+    images_used_by_everyone: Used by everyone
+    images_deletable: Deletable image list (because used by everyone)
+    newsletters: Newsletter list
+
+new:
+    links: Add link
+    recipients: Add recipient
+    tags: Add tag
+    categories: Add category
+    images: Add image
+    newsletters: Add newsletter
+
+edit:
+    links: Update link
+    recipients: Update recipient
+    tags: Update tag
+    categories: Update category
+    images: Update image
+    newsletters: "[%recipient_name%] Update their newsletter"
+
+alert:
+    actions_on_prepare_next_nl: It will assign next links and empty images. Always ok?
+    confirm_ingest_unsaved_images: Confirm the creation of new images from the added files?
+    image_requested_count: "%count% images are requested"
+    no_image_used_by_everyone: No image is used by everyone
+    nothing_to_ingest: There's no image to ingest
+
+success:
+    next_nl_prepared: First and last link assigned and no more image associated
+    images_assigned_to: Image(s) assigned to %recipient%
+    create: The content "%name%" has been created with success.
+    update: The content "%name%" has been updated with success.
+    delete: The content "%name%" has been deleted with success.
+    new_images_ingested: "Ingestion of %count% image(s) done"
+    pdf_generated: "Pdf generated, path : %path%"
+
+error:
+    images_needed: Strictly %imageCountNeeded% image(s) needed (%imageCountPrepared% prepared)
+    images_not_all_assigned: At least one image is not assigned with the recipient
+    nl_date_in_the_past: The date is in the past
+    no_new_link: There's no new link
+    markdown_not_convertable_to_html: The markdown to html conversion has failed
+
+newsletter:
+    header: "Newsletter"
+    footer: "Published on %date%"
+
+help:
+    last_link: This one can be empty, it will be computed

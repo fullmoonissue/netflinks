@@ -1,0 +1,16 @@
+{
+    "name": "netflinks",
+    "version": "1.0.0",
+    "description": "NL custom",
+    "main": "index.js",
+    "keywords": [
+        "NL"
+    ],
+    "author": "fullmoonissue",
+    "license": "MIT",
+    "devDependencies": {
+        "@playwright/test": "^1.46.1",
+        "@types/node": "^22.7.5",
+        "typescript": "^5.6.3"
+    }
+}

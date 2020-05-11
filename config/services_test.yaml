@@ -1,0 +1,2 @@
+parameters:
+    db_name: '%db_name_test%'

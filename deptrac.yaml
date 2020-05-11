@@ -1,0 +1,38 @@
+deptrac:
+    paths:
+        - ./src
+
+    layers:
+        -   name: Domain
+            collectors:
+                -   type: directory
+                    value: src/Domain
+        -   name: Infrastructure
+            collectors:
+                -   type: directory
+                    value: src/Infrastructure
+
+    ruleset:
+        Infrastructure:
+            - Domain
+        Domain:
+
+    # Skip violations about [Repository in Entity] + [Validator in Entity]
+    # Those could not exist by doing some non-php declarations (ex: in yaml) instead of php #[Attributes] inside classes
+    # or maybe with fine-grained layers
+    skip_violations:
+        App\Domain\Entity\Category:
+            - App\Infrastructure\Repository\CategoryRepository
+        App\Domain\Entity\Image:
+            - App\Infrastructure\Repository\ImageRepository
+            - App\Infrastructure\Validator\ContainsAllowedImageFilename
+        App\Domain\Entity\Link:
+            - App\Infrastructure\Repository\LinkRepository
+            - App\Infrastructure\Validator\ContainsAlreadyRegisteredUrl
+        App\Domain\Entity\Newsletter:
+            - App\Infrastructure\Repository\NewsletterRepository
+            - App\Infrastructure\Validator\ContainsCorrectDateRange
+        App\Domain\Entity\Recipient:
+            - App\Infrastructure\Repository\RecipientRepository
+        App\Domain\Entity\Tag:
+            - App\Infrastructure\Repository\TagRepository

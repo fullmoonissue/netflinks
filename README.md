@@ -14,11 +14,12 @@ Netflix + Links = Netflinks
 
 - Composer ([🔗](https://getcomposer.org/download/))
 - Symfony CLI ([🔗](https://symfony.com/download#step-1-install-symfony-cli))
+- NPM ([🔗](https://nodejs.org/en/download))
 
 ## Install
 
 - git clone https://github.com/fullmoonissue/netflinks
-- cd /path/to/netflinks
+- cd netflinks
 - make install
 - ./bin/console db:create
 - ./bin/console doctrine:migration:migrate

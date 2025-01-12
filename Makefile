@@ -4,7 +4,7 @@
 
 install:
 	composer install
-	npm install
+	npm clean-install
 
 # ### #
 # Run #

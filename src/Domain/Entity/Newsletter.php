@@ -19,7 +19,7 @@ class Newsletter implements Stringable
 {
     #[ORM\Id]
     #[ORM\Column]
-    private string $id;
+    private string $id = '';
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private DateTimeImmutable $date;

@@ -296,6 +296,15 @@ Il ne restera qu'à cliquer sur ce menu et de confirmer la suppression en base (
 
 ---
 
+### Nom du fichier image
+
+Pour éviter tout potentiel problème avec des noms de fichiers comportant des caractères spéciaux ou des espaces, le nom
+du fichier peut devenir la valeur du md5 de la source.
+
+Exemple : md5 -s https://www.jonglerieetjonglages.fr/en/images/antiquite/egypt_2000avJC_virtuosos_of_juggling_p3_lq.jpg
+
+---
+
 ### Détails concernant cette documentation
 
 - Pour apposer une ancre (html), placer {#ancre} à un endroit puis un accès [mon ancre](#ancre) à un autre.
@@ -303,6 +312,29 @@ Il ne restera qu'à cliquer sur ce menu et de confirmer la suppression en base (
 - Pour placer une traduction venant de Netflinks, placer `% %{clé-de-traduction}% %` (sans espace)
 - Pour placer un chemin relatif, il doit être spécifié dans la clé `$paths` du `DashboardController`, puis placer
 `# #{clé-de-traduction}# #` (sans espace)
+
+---
+
+### Exemple de workflow complet de création d'une NL
+
+- Créer un destinataire nommé `Jean` (et `JD` pour le nom court)
+- Créer deux catégories nommées `Divers` et `Autres`
+- Ajouter un lien avec https://www.perdu.com comme url et `Perdu` comme nom, dans la catégorie `Divers` pour `Jean`
+- Ajouter un lien avec https://127.0.0.1:8000 comme url et `Netflinks` comme nom, dans la catégorie `Autres` pour `Jean`
+- Copier deux fichiers image dans le dossier `##images.folder.path##` (nommés disons `test1.jpg` et `test2.jpg`)
+- Actualiser la page (afin que le menu `%%index.images_used_by_everyone%%` n'affiche plus `0`)
+- Cliquer sur `%%index.images_used_by_everyone%%` puis confirmer
+- Ajouter une newsletter :
+  - pour Jean
+  - à date d'aujourd'hui
+  - `Perdu` comme premier lien
+  - `Netflinks` comme dernier lien
+  - `test1.jpg` et `test2.jpg` comme images
+  - `Autres` et `Divers` comme catégories
+- Dans le sous-menu (les 3 petits points ...) de la NL pour `Jean`, sélectionner `%action.assign_images_to_recipient%`
+- Dans le même sous-menu, sélectionner `%action.generate_pdf%`
+
+Voilà, une NL constituée de deux liens dans deux catégories différentes où une image est affichée avant chacune.
 
 ---
 ---
@@ -325,9 +357,9 @@ Un destinataire désignera une personne à qui un lien sera partagé.
 
 ### Image
 
-Une image est ce qui sépare les catégories entre elles dans la NL.
+Une image est ce qui est présenté en amont d'une catégorie dans la NL.
 
-Il faudra s'assurer d'avoir au moins `{nombre de catégories} - 1` image(s) importée(s) avant de générer une NL.
+Il faudra s'assurer d'avoir au moins `{nombre de catégories}` image(s) importée(s) avant de générer une NL.
 
 ### Lien
 
@@ -364,16 +396,6 @@ Ex: `Le contenu "Nouveau lien" a été créé avec succès.`
 
 ---
 ---
-
-### Pourquoi le nom du fichier attendu doit être sous la forme [a-zA-Z0-9]+.{extension} ?
-
-Pour éviter toute embrouille avec des noms de fichiers comportant des caractères spéciaux ou des espaces, j'ai pris la
-décision ne vouloir que des caractères alphabétiques de a à z (peu importe la casse) et des chiffres.
-
-Astuce personnelle : pour avoir un nom de fichier qui respecte cette expression régulière, je place comme valeur le md5
-de la source.
-
-Exemple : md5 -s https://www.jonglerieetjonglages.fr/en/images/antiquite/egypt_2000avJC_virtuosos_of_juggling_p3_lq.jpg
 
 ### Comment chaque action effectuée arrive à avoir son propre flash message ?
 

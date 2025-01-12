@@ -19,12 +19,13 @@ Netflix + Links = Netflinks
 
 - git clone https://github.com/fullmoonissue/netflinks
 - cd /path/to/netflinks
+- make install
 - ./bin/console db:create
-- ./bin/console assets:install
+- ./bin/console doctrine:migration:migrate
 
 ## Run
 
-- make symfony-server
+- make server-start
 - go to https://127.0.0.1:8000/admin/en (_en_ or _fr_ at the end switch your preferred language)
 
 ## Tests

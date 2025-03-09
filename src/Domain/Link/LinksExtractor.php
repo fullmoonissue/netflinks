@@ -21,12 +21,14 @@ readonly class LinksExtractor implements LinksExtractorInterface
      */
     public function extract(Newsletter $newsletter): array
     {
+        $rangeLinkDates = new RangeLinkDates(
+            $newsletter->getFirstLink()->getDate(),
+            $newsletter->getLastLink()->getDate()
+        );
+
         return array_values(
             array_filter(
-                $this->linkRepository->getRangedLinks(
-                    $newsletter->getFirstLink()->getDate(),
-                    $newsletter->getLastLink()->getDate(),
-                ),
+                $this->linkRepository->getRangedLinks($rangeLinkDates),
                 function (Link $link) use ($newsletter) {
                     return $this->isLinkEligible->isSatisfiedBy($link, $newsletter);
                 }

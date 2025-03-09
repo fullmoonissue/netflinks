@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Double\Fake\Infrastructure\Repository;
 
 use App\Domain\Entity\Link;
+use App\Domain\Link\RangeLinkDates;
 use App\Domain\Repository\LinkRepositoryInterface;
 use DateTimeImmutable;
 use Exception;
@@ -49,15 +50,16 @@ class LinkRepositoryFake implements LinkRepositoryInterface
         return $links[count($links) - 1];
     }
 
-    public function getRangedLinks(DateTimeImmutable $startDate, DateTimeImmutable $endDate): array
+    public function getRangedLinks(RangeLinkDates $rangeLinkDates): array
     {
         $links = $this->getAllOrderedLinks();
 
         return array_values(
             array_filter(
                 $links,
-                function (Link $link) use ($startDate, $endDate) {
-                    return $link->getDate() >= $startDate && $link->getDate() <= $endDate;
+                function (Link $link) use ($rangeLinkDates) {
+                    return $link->getDate() >= $rangeLinkDates->getStartDate()
+                        && $link->getDate() <= $rangeLinkDates->getEndDate();
                 }
             )
         );

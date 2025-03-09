@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Functional\Infrastructure\Repository;
 
+use App\Domain\Link\RangeLinkDates;
 use App\Infrastructure\Repository\LinkRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\NoResultException;
@@ -123,7 +124,11 @@ class LinkRepositoryTest extends KernelTestCase
             );
         }
 
-        $links = $sut->getRangedLinks(new DateTimeImmutable('- 3 days'), new DateTimeImmutable('now'));
+        $rangeLinkDates = new RangeLinkDates(
+            new DateTimeImmutable('- 3 days'),
+            new DateTimeImmutable('now')
+        );
+        $links = $sut->getRangedLinks($rangeLinkDates);
 
         $this->assertCount(2, $links);
     }

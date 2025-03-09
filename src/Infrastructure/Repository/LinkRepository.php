@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Repository;
 
 use App\Domain\Entity\Link;
+use App\Domain\Link\RangeLinkDates;
 use App\Domain\Repository\LinkRepositoryInterface;
 use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -62,14 +63,14 @@ class LinkRepository extends ServiceEntityRepository implements LinkRepositoryIn
         return $this->findOneBy([], ['date' => 'DESC']);
     }
 
-    public function getRangedLinks(DateTimeImmutable $startDate, DateTimeImmutable $endDate): array
+    public function getRangedLinks(RangeLinkDates $rangeLinkDates): array
     {
         return $this
             ->createQueryBuilder('l')
             ->where('l.date BETWEEN :startDate AND :endDate')
             ->orderBy('l.date', 'ASC')
-            ->setParameter('startDate', $startDate->format('Y-m-d H:i:s'))
-            ->setParameter('endDate', $endDate->format('Y-m-d H:i:s'))
+            ->setParameter('startDate', $rangeLinkDates->getStartDate()->format('Y-m-d H:i:s'))
+            ->setParameter('endDate', $rangeLinkDates->getEndDate()->format('Y-m-d H:i:s'))
             ->getQuery()
             ->getResult();
     }

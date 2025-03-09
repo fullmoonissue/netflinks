@@ -42,7 +42,7 @@ rector:
 
 # Code style
 cs-fixer:
-	php vendor/bin/php-cs-fixer fix --allow-risky=yes
+	PHP_CS_FIXER_IGNORE_ENV=1 php vendor/bin/php-cs-fixer fix --allow-risky=yes
 
 # PHPStan
 phpstan:

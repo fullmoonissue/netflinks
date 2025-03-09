@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\Repository;
 
 use App\Domain\Entity\Link;
+use App\Domain\Link\RangeLinkDates;
 use DateTimeImmutable;
 
 interface LinkRepositoryInterface
@@ -20,7 +21,7 @@ interface LinkRepositoryInterface
     /**
      * @return Link[]
      */
-    public function getRangedLinks(DateTimeImmutable $startDate, DateTimeImmutable $endDate): array;
+    public function getRangedLinks(RangeLinkDates $rangeLinkDates): array;
 
     public function isUrlAlreadyRegistered(string $url): bool;
 }

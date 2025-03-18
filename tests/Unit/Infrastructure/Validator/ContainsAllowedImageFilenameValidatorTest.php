@@ -5,21 +5,15 @@ declare(strict_types=1);
 namespace Tests\Unit\Infrastructure\Validator;
 
 use App\Domain\Image\AllowedImageExtension;
+use App\Domain\Image\IsImageExtensionEligible;
 use App\Infrastructure\Validator\ContainsAllowedImageFilename;
 use App\Infrastructure\Validator\ContainsAllowedImageFilenameValidator;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
-use Tests\Double\Stub\Domain\Image\IsImageExtensionEligibleStub;
 
 class ContainsAllowedImageFilenameValidatorTest extends ConstraintValidatorTestCase
 {
-    // This is a horrible hack.
-    // The value in IsImageExtensionEligibleStub() inside the createValidator() can't be set easily.
-    // So the workaround is to use this static bool by switching from true to false and vice versa.
-    // The order of the tests can't be changed and no DataProvider can be used (or at your own risk).
-    private static bool $isImageExtensionEligible = true;
-
     #[Test]
     public function it_validates_that_it_contains_allowed_image_filename_extensions(): void
     {
@@ -54,11 +48,8 @@ class ContainsAllowedImageFilenameValidatorTest extends ConstraintValidatorTestC
 
     protected function createValidator(): ConstraintValidatorInterface
     {
-        $isImageExtensionEligible = self::$isImageExtensionEligible;
-        self::$isImageExtensionEligible = !self::$isImageExtensionEligible;
-
         return new ContainsAllowedImageFilenameValidator(
-            new IsImageExtensionEligibleStub($isImageExtensionEligible)
+            new IsImageExtensionEligible()
         );
     }
 }

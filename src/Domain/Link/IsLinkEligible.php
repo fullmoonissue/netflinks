@@ -12,14 +12,7 @@ class IsLinkEligible implements IsLinkEligibleInterface
 {
     public function isSatisfiedBy(Link $link, Newsletter $newsletter): bool
     {
-        $recipientShortNames = array_map(
-            function (Recipient $recipient) {
-                return $recipient->getShort();
-            },
-            $link->getRecipients()->toArray()
-        );
-
-        if (!in_array($newsletter->getRecipient()->getShort(), $recipientShortNames)) {
+        if (!$link->getRecipients()->contains($newsletter->getRecipient())) {
             return false;
         }
 

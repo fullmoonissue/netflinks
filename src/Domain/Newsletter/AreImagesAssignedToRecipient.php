@@ -11,23 +11,26 @@ class AreImagesAssignedToRecipient
 {
     public function isSatisfiedBy(Newsletter $newsletter): bool
     {
-        $recipientId = $newsletter->getRecipient()->getId();
-
         /** @var Image $image */
         foreach ($newsletter->getImages() as $image) {
-            $isRecipientFound = false;
-            foreach ($image->getRecipients() as $recipient) {
-                if ($recipient->getId() === $recipientId) {
-                    $isRecipientFound = true;
-                    break;
-                }
-            }
-
-            if (!$isRecipientFound) {
+            if (!$this->isImageLinkedToRecipient($newsletter, $image)) {
                 return false;
             }
         }
 
         return true;
+    }
+
+    private function isImageLinkedToRecipient(Newsletter $newsletter, Image $image): bool
+    {
+        $recipientId = $newsletter->getRecipient()->getId();
+
+        foreach ($image->getRecipients() as $recipient) {
+            if ($recipient->getId() === $recipientId) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
